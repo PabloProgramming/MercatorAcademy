@@ -1,4 +1,4 @@
-object ScalaFundamentals1 extends App {
+object ScalaFundamentals extends App {
   //  VAL = BEST PRACTICES
   private val melons = 5 * 50;
   private val apples = 2 * 10;

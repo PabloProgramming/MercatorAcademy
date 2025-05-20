@@ -22,7 +22,7 @@ object ScalaFunTask1 extends App {
 
 
   // MVP 5
-  class Book(val title: Title, val author: Author, val isbn: Isbn, val releaseDate: ReleaseDate, val genre: Genre, val numOfPages: NumOfPages) {
+  class Book(val title: Title, val author: Author, val isbn: Isbn, val releaseDate: Int, val genre: Genre, val numOfPages: Int) {
 
     var isAvailable: Boolean = true;
 
