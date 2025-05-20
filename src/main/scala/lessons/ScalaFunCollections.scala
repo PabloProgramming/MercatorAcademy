@@ -1,4 +1,4 @@
-import javax.swing.InputMap
+package lessons
 
 object ScalaFunCollections extends App {
 

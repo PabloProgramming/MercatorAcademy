@@ -1,3 +1,5 @@
+package lessons
+
 object ScalaFundamentals extends App {
   //  VAL = BEST PRACTICES
   private val melons = 5 * 50;

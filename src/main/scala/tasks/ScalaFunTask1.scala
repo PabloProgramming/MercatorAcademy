@@ -1,3 +1,5 @@
+package tasks
+
 object ScalaFunTask1 extends App {
 // MVP 1
   val result1: Boolean = 3 + (4 * 57) < 100 //false
