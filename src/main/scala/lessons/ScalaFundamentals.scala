@@ -50,7 +50,7 @@ object ScalaFundamentals extends App {
   //LOGICAL
 
   val and: Boolean = true && true //both must be tru to return true
-  val or: Boolean = true || false // either side can be tru to return true
+  val or: Boolean = true || false // either side can be true to return true
   val not: Boolean = !false
 
   //METHODS

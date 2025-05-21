@@ -1,4 +1,4 @@
-package tasks
+package lessons
 
 object ScalaFunConditionals extends App {
 
