@@ -26,9 +26,13 @@ object scalaFunCondTask3 extends App {
   def calculateMoneyEarnedByMilesTravelled(inputMiles: String): Unit = {
     try {
       val miles = inputMiles.toInt
-      val moneyEarned: Double = miles * 0.45
-      println(s"Distance travelled: $miles miles")
-      println(f"Amount to be paid: £$moneyEarned%.2f")
+      if (miles < 0) {
+        println("Invalid miles input")
+      } else {
+        val moneyEarned: Double = miles * 0.45
+        println(s"Distance travelled: $miles miles")
+        println(f"Amount to be paid: £$moneyEarned%.2f")
+      }
     } catch {
       case e: NumberFormatException =>
         println("Invalid input")
