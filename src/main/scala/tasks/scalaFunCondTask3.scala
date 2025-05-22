@@ -15,11 +15,13 @@ object scalaFunCondTask3 extends App {
   }
 
   // d)
-   val needsABag: Boolean = watermelons > 3 && watermelons <= 5
+  val hasBag: Boolean = false // Try out both true and false to make sure the if statement works as intended
 
-  if (watermelons > 5) println(s"Can't carry $watermelons watermelons, there are too many!")
-  else if (needsABag) println(s"Needs a bag to carry $watermelons watermelons.")
-  else println(s"Does not need a bag to carry $watermelons watermelons.")
+  if (watermelons <= 3 || watermelons <= 5 && hasBag) {
+    println(s"John can buy $watermelons watermelons")
+  } else {
+    println(s"John cannot buy $watermelons watermelons")
+  }
 
   // MVP 2
 
