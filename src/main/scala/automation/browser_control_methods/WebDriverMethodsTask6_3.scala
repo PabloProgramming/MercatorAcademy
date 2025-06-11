@@ -1,6 +1,6 @@
 package automation.browser_control_methods
 
-import org.openqa.selenium.{By, WebDriver, WebElement}
+import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
 
 object WebDriverMethodsTask6_3 extends App {
@@ -17,7 +17,10 @@ object WebDriverMethodsTask6_3 extends App {
   // Locate elements
   val firstNameInput: WebElement = driver.findElement(By.id("firstName"))
   val submitButton: WebElement = driver.findElement(By.id("submit"))
-  val hobbiesCheckBox: WebElement = driver.findElement(By.cssSelector("#hobbies-checkbox-1"))
+  val hobbiesLabel: WebElement = driver.findElement(By.cssSelector("label[for='hobbies-checkbox-1']"))
+
+  // Cast driver to JavascriptExecutor
+  val jsExecutor = driver.asInstanceOf[JavascriptExecutor]
 
   // Conditionals
   if (firstNameInput.isDisplayed && firstNameInput.isEnabled) {
@@ -27,21 +30,23 @@ object WebDriverMethodsTask6_3 extends App {
     println("FirstName input is not ready to type ❌")
   }
 
-  if (!hobbiesCheckBox.isSelected && hobbiesCheckBox.isEnabled && hobbiesCheckBox.isDisplayed) {
-    hobbiesCheckBox.click()
+  if (!hobbiesLabel.isSelected && hobbiesLabel.isEnabled && hobbiesLabel.isDisplayed) {
+    jsExecutor.executeScript("arguments[0].scrollIntoView(true);", hobbiesLabel)
+    hobbiesLabel.click()
     println("Sports checked ✅")
   } else {
     println("Checkbox is not ready (Ad obstructing interaction) ❌")
   }
 
   if (submitButton.isDisplayed && submitButton.isEnabled) {
+    jsExecutor.executeScript("arguments[0].scrollIntoView(true);", submitButton)
     submitButton.click()
     println("Submitted! ✅")
   } else {
     println("Not ready to submit ❌")
   }
 
-  driver.quit()
+ // driver.quit()
 
   // EXTENSION & RESEARCH
 
