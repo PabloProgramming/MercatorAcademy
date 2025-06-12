@@ -1,4 +1,4 @@
-package tasks
+package scalaFundamentals.tasks
 
 import java.security.Principal
 import scala.:+

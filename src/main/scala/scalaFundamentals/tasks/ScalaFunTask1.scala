@@ -1,4 +1,4 @@
-package tasks
+package scalaFundamentals.tasks
 
 object ScalaFunTask1 extends App {
 // MVP 1

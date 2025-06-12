@@ -1,8 +1,8 @@
-package automation.handling_web_elements
+package automation.handling_web_elements.tasks
 
-import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.Select
+import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 
 object HandlingWebElementsTask7_1 extends App {
 

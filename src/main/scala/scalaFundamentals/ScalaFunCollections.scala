@@ -1,4 +1,4 @@
-package lessons
+package scalaFundamentals
 
 object ScalaFunCollections extends App {
 

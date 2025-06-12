@@ -1,4 +1,4 @@
-package automation.handling_web_elements
+package automation.handling_web_elements.tasks
 
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.{Alert, By, WebDriver, WebElement}

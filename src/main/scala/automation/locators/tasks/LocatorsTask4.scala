@@ -1,7 +1,7 @@
-package automation.locators
+package automation.locators.tasks
 
-import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.{By, WebDriver, WebElement}
 
 import scala.jdk.CollectionConverters.CollectionHasAsScala
 

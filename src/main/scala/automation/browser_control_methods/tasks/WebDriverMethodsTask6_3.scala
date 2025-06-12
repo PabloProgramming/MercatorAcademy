@@ -1,7 +1,7 @@
-package automation.browser_control_methods
+package automation.browser_control_methods.tasks
 
-import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 
 object WebDriverMethodsTask6_3 extends App {
 
