@@ -1,4 +1,4 @@
-package tasks
+package scalaFundamentals.tasks
 
 object scalaFunCondTask3 extends App {
 

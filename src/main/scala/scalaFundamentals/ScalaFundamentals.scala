@@ -1,4 +1,4 @@
-package lessons
+package scalaFundamentals
 
 object ScalaFundamentals extends App {
   //  VAL = BEST PRACTICES

@@ -1,4 +1,4 @@
-import lessons.Calculator
+import scalaFundamentals.Calculator
 import org.scalatest.flatspec.AnyFlatSpec
 
 class CalculatorSpec extends AnyFlatSpec {

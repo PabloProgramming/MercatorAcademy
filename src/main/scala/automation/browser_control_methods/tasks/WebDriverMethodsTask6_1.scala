@@ -1,4 +1,4 @@
-package automation.browser_control_methods
+package automation.browser_control_methods.tasks
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
