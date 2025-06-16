@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.{ChromeDriver, ChromeOptions}
 object HeadlessMode extends App {
 
   // HEADLESS MODE
-  val options: ChromeOptions = new ChromeOptions
+  val options = new ChromeOptions
   options.addArguments("--headless")
 
   // Pass the options (it runs, but it does not open a browser window)
