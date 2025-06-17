@@ -18,6 +18,15 @@ object Headless_Screenshot_Exceptions_Task9_1 extends App {
 
   val driver = new ChromeDriver(options)
 
+  // Take a screenshot function
+  def takeScreenshot(driver: WebDriver, folderPath: String, fileName: String): File = {
+    val timeStamp = new SimpleDateFormat("YYYY-MM-DD_HH-MM-SS").format(new Date())
+    val srcFile: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
+    val screenshot = new File(s"$folderPath/${fileName}_$timeStamp.png")
+    FileHandler.copy(srcFile, screenshot)
+    screenshot
+  }
+
   // TRY CATCH FINALLY BLOCK
 
   try {
@@ -38,15 +47,6 @@ object Headless_Screenshot_Exceptions_Task9_1 extends App {
     val explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5))
     val resultMsg: WebElement = explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("flash")))
     println(s"Result msg with text: ${resultMsg.getText} - ☢️")
-
-    // Take a screenshot function
-    def takeScreenshot(driver: WebDriver, folderPath: String, fileName: String): File = {
-      val timeStamp = new SimpleDateFormat("YYYY-MM-DD_HH-MM-SS").format(new Date())
-      val srcFile: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
-      val screenshot = new File(s"$folderPath/${fileName}_$timeStamp.png")
-      FileHandler.copy(srcFile, screenshot)
-      screenshot
-    }
 
     // Using function, taking screenshot of result page (success or failure)
     val successOrFailure = if (resultMsg.getText.contains("logged")) "success" else "failure"

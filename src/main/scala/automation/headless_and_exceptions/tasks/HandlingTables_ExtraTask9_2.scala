@@ -2,10 +2,16 @@ package automation.headless_and_exceptions.tasks
 
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.WebDriverWait
-import org.openqa.selenium.{By, TimeoutException, WebDriver, WebElement}
+import org.openqa.selenium.{By, OutputType, TimeoutException, WebDriver, WebElement}
 
 import java.time.Duration
 import scala.jdk.CollectionConverters.CollectionHasAsScala
+import automation.headless_and_exceptions.tasks.Headless_Screenshot_Exceptions_Task9_1.{driver, takeScreenshot}
+import org.openqa.selenium.io.FileHandler
+
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
 
 object HandlingTables_ExtraTask9_2 extends App {
 
@@ -13,8 +19,32 @@ object HandlingTables_ExtraTask9_2 extends App {
 
   val driver: WebDriver = new ChromeDriver()
 
+  val pathToFolder: String = "/Users/pablo.montalvo/Documents/Screenshots/ExtensionTaskTables"
+  //  val timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
+  val screenshotsDir = new File(pathToFolder)
+  if (!screenshotsDir.exists()) {
+    screenshotsDir.mkdirs()
+    println("New directory created - ✅")
+  }
+
+  //  Set up util to capture an element and not the full screen
+  def captureElement(
+                      element: WebElement,
+                      basePath: String = pathToFolder,
+                      prefix: String = ""
+                    ): Unit = {
+    val timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
+    val srcElement: File = element.getScreenshotAs(OutputType.FILE) // Capture only that element
+    val destination = new File(s"$basePath/${prefix}_$timeStamp.png")
+    FileHandler.copy(srcElement, destination)
+    println(s"Screenshot saved to: ${destination.getAbsolutePath}")
+  }
+
   try {
     driver.get("https://the-internet.herokuapp.com/tables")
+
+    // Print FULL PAGE
+    takeScreenshot(driver, pathToFolder, "FullPage")
 
     // Locate Table 1
     val table1: WebElement = driver.findElement(By.id("table1"))
@@ -42,16 +72,23 @@ object HandlingTables_ExtraTask9_2 extends App {
       firstCellText.nonEmpty
     }*/
 
-    // Print lastNames
+    // Screenshot lastNames
     val tableBody: WebElement = table1.findElement(By.tagName("tbody"))
     val bodyRows: Iterable[WebElement] = tableBody.findElements(By.tagName("tr")).asScala
 
-    val lastNames: Iterable[String] = bodyRows.map { row =>
+    def sanitizeFilename(name: String): String = name.replaceAll("[^a-zA-Z0-9\\-_]", "_")
+
+    val lastNamesSeq: Seq[String] = bodyRows.map { row =>
       val cells = row.findElements(By.tagName("td")).asScala
-      cells.head.getText
-    }
-    val lastNamesSeq: Seq[String] = lastNames.toSeq
-    for (lastName <- lastNamesSeq) println(lastName)
+      val lastNameCell = cells.head
+      val lastNameText = lastNameCell.getText
+
+      val safeName = sanitizeFilename(lastNameText)
+      captureElement(lastNameCell, pathToFolder, s"LastNameCell_$safeName")
+
+      lastNameText
+    }.toSeq
+
 
     //Verify if the order is asc or desc
     var ascending: Boolean = true
