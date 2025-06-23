@@ -1,5 +1,6 @@
 package automation.handling_web_elements
 
+import com.sun.tools.javac.util.Assert
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.{By, WebDriver, WebElement}
@@ -21,6 +22,13 @@ object HandlingDropDowns extends App {
   println(s"Option selected: ${select.getFirstSelectedOption.getText}")
   select.selectByIndex(1)
   println(s"Option selected: ${select.getFirstSelectedOption.getText}")
+
+  val isMultiple: Boolean = select.isMultiple
+  println(isMultiple)
+
+  // Best Practices => Assert selection results:
+  assert(select.getAllSelectedOptions.size() == 1) // because only one can be selected
+
 
 
 
